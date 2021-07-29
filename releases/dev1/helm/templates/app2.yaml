@@ -14,7 +14,7 @@ spec:
       - name: fullnameOverride
         value: nginx-app2
       valueFiles:
-      - values-app2.yaml
+      - value-app2/dev1-app2.yaml
     path: helm/buildachart
     repoURL: https://github.com/sachin433/argocd.git
     targetRevision: HEAD
