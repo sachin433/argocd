@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-helm-app2
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      parameters:
+      - name: fullnameOverride
+        value: nginx-app2
+      valueFiles:
+      - values-app2.yaml
+    path: helm/buildachart
+    repoURL: https://github.com/sachin433/argocd.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - PruneLast=true
+    - Replace=true
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
