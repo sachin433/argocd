@@ -19,6 +19,9 @@ spec:
     repoURL: https://github.com/sachin433/argocd.git
     targetRevision: HEAD
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - PruneLast=true
     - Replace=true
