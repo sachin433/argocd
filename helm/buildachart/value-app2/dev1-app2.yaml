@@ -49,7 +49,7 @@ ingress:
   hosts:
     - host:
       paths:
-        - path: /nginx
+        - path: /serv
           pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
