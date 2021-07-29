@@ -1,0 +1,4 @@
+dependencies:
+- name: buildachart
+  version: 0.1.0
+  repository: https://github.com/sachin433/argocd/blob/main/helm/buildachart
