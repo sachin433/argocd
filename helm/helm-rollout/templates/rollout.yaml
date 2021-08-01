@@ -28,7 +28,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: buildchart
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -62,7 +62,7 @@ spec:
         - containerPort: 8080
   strategy:
     blueGreen:
-      activeService: {{ include "buildachart.fullname" . }}-active
-      previewService: {{ include "buildachart.fullname" . }}-preview
+      activeService: "{{ include "buildachart.fullname" . }}-active"
+      previewService: "{{ include "buildachart.fullname" . }}-preview"
       autoPromotionEnabled: false
       
