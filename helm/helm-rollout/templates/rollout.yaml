@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: argoproj.io/v1alpha1
 kind: Deployment
 metadata:
   name: {{ include "buildachart.fullname" . }}
@@ -59,3 +59,10 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+        - containerPort: 8080
+  strategy:
+    blueGreen:
+      activeService: {{ include "buildachart.fullname" . }}-active
+      previewService: {{ include "buildachart.fullname" . }}-preview
+      autoPromotionEnabled: false
+      
